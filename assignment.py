@@ -1,6 +1,6 @@
 import datetime
 import random
-from datetime import datetime
+from datetime import date, datetime
 import hashlib
 
 def first():
@@ -27,14 +27,11 @@ def second():
   print(f'Volume is: {volume}.')
 
 def third():
-    bool = False
     array = input('Enter list of numbers: ')
     myList = array.split(',')
     first = myList[0].strip()
     last = myList[-1].strip()
-    if first == last:
-        bool = True
-    print(bool)
+    print(first == last)
 
 def fourth():
     text = '''
@@ -54,8 +51,7 @@ def fourth():
     #     if (word == 'Python'):
     #         wordCount += 1
     for word in wordList:
-        string = word.casefold()
-        if "python" in string:
+        if "python" in word.casefold():
             wordCount += 1
     print(wordCount)
 
@@ -97,19 +93,17 @@ def ninth():
     # print(strInput.isupper())
 
 def tenth():
-    # vowels = {a,e,i,o,u}
+    # vowelDict = {a,e,i,o,u}
     vowels = 0
     consonants = 0
     strInput = input('Enter a string: ')
     for letters in strInput:
-        if letters=="a" or letters=="e" or letters=="i" or letters=="o" or letters=="u":
+        if letters.lower() =="a" or letters.lower() =="e" or letters.lower()=="i" or letters.lower() =="o" or letters.lower() =="u":
             vowels+=1
         else:
             consonants+=1
-    print("Vowels: ")
-    print(vowels)
-    print("Consonants: ")
-    print(consonants)
+    print(f"Vowels: {vowels}")
+    print(f"Consonants: {consonants}")
 
 def eleventh():
     dates = str(date.today().strftime("%m/%d/%Y"))
@@ -118,33 +112,26 @@ def eleventh():
     f.close()
     
 def twelfth():
-    try:
-        strInput = float(input('Enter a string: '))
-        if type(strInput) == float:
-            raise FloatException('Input is entered as float!')
+    strInput = (input('Enter an integer value: '))
+    strInput = float(strInput)
+    if float(strInput) != int(strInput):
+        print(f'ERROR: {strInput} is not an integer.')
+    else:
+        strInput = int(strInput)
         strInput*=-1
         print(strInput)
-    except FloatException as fe:
-        print(fe)
-
-class FloatException(Exception):
-    def __init__(self, message):
-        self.message = message
-        super().__init__(self.message)
 
 def thirteenth():
-    done = False
-    while done != True:
+    while 1:
         firstInt = (input('Enter first integer: '))
         if firstInt.lower() == "exit":
             break
-        else:
-            firstInt = int(firstInt)
+        firstInt = int(firstInt)
         secondInt = (input('Enter second integer: '))
         if secondInt.lower() == "exit":
             break
-        else:
-            secondInt = int(secondInt)
+        secondInt = int(secondInt)
+
         total = firstInt + secondInt
         print(f"Answer: {total}")
 
@@ -295,4 +282,4 @@ if __name__ == "__main__":
 #   fourteenth()
 #   fifteenth()
 #   sixteenth()
-    seventeenth()
+#   seventeenth()
